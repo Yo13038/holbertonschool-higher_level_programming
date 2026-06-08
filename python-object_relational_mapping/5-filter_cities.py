@@ -13,7 +13,6 @@ if __name__ == "__main__":
     data_base = sys.argv[3]
     state_name = sys.argv[4]
 
-
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -21,7 +20,6 @@ if __name__ == "__main__":
         passwd=password,
         db=data_base
     )
-
 
     cursor = db.cursor()
 
@@ -38,7 +36,6 @@ if __name__ == "__main__":
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-
 
     cursor.close()
     db.close()
