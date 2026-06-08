@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Script qui liste tous les objets 'State' de la base de données
-Connexion explicite à localhost sur le port 3306
+Script that list state object from database
 """
 import sys
 from model_state import Base, State
@@ -14,8 +13,9 @@ if __name__ == "__main__":
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    connection_url = f"mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}"
-
+    connection_url = (
+        f"mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}"
+    )
     engine = create_engine(connection_url, pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
@@ -25,6 +25,5 @@ if __name__ == "__main__":
 
     for state in states:
         print(f"{state.id}: {state.name}")
-        
 
     session.close()
