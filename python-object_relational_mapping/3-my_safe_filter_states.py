@@ -23,10 +23,10 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
 
-    query ="""SELECT * FROM states
+    query = """SELECT * FROM states
                 WHERE name = %s
                 ORDER BY id ASC;"""
-    
+
     cursor.execute(query, (state_name_searched,))
 
     rows = cursor.fetchall()
