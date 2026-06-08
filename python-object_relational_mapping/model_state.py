@@ -1,9 +1,9 @@
-#!/bin/usr/bin/python3
+#!/usr/bin/python3
 """
 Module class state and his instance Base
 """
 
-from sqlalchemy import Colums, Integer, String
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
