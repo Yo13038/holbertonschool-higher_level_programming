@@ -23,9 +23,12 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
 
-    query = """SELECT * FROM states
-                   WHERE name = '{}'
-                   ORDER BY id ASC;""".format(state_name_searched)
+    query = (
+        "SELECT * FROM states "
+        "WHERE name = '{}' "
+        "ORDER BY id ASC;"
+    ).format(state_name_searched)
+
     cursor.execute(query)
 
     rows = cursor.fetchall()
@@ -33,6 +36,5 @@ if __name__ == "__main__":
     for row in rows:
         print(row)
 
-    # 6. Fermeture propre des ressources
     cursor.close()
     db.close()
