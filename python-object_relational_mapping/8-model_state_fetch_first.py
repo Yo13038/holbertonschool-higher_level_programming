@@ -26,6 +26,6 @@ if __name__ == "__main__":
     if first_state is None:
         print("Nothing")
     else:
-        print("{first_state.id}: {first_state.name}")
+        print(f"{first_state.id}: {first_state.name}")
 
     session.close()
