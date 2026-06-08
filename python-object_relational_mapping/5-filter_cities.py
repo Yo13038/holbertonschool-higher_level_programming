@@ -34,7 +34,7 @@ if __name__ == "__main__":
     cursor.execute(query, (state_name,))
 
     rows = cursor.fetchall()
-    
+
     cities = [row[1] for row in rows]
 
     print(", ".join(cities))
