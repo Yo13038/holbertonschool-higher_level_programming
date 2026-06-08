@@ -8,16 +8,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-
-    # Découpage propre pour respecter la limite des 79 caractères
-    connection_url = (
-        f"mysql+mysqldb://{username}:{password}"
-        f"@localhost:3306/{db_name}"
+    # Utilisation du backslash pour couper proprement sous les 79 caractères
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'
+        .format(sys.argv[1], sys.argv[2], sys.argv[3]),
+        pool_pre_ping=True
     )
-    engine = create_engine(connection_url, pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
     session = Session()
