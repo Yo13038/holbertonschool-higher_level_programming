@@ -35,8 +35,8 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
 
 def run():
     server_address = ('', 8000)
-    httpd = HTTPServer(server_address, SimpleAPIHandler)
-    print("Serveur lancé sur le port 8000...")
+    my_server = HTTPServer(server_address, SimpleAPIHandler)
+    my_server.serve_forever()
 
 
 if __name__ == "__main__":
