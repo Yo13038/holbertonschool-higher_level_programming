@@ -49,7 +49,8 @@ def add_user():
     
     users[username] = data
     
-    return jsonify({"message": "User added successfully", "user": users[username]}), 201
+    response_data = {"message": "User added", "user": data}
+    return jsonify(response_data), 201
 
 if __name__ == "__main__":
     app.run(debug=True)
