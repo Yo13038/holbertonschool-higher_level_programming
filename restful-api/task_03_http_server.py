@@ -31,7 +31,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain; charset=utf-8")
             self.end_headers()
-            self.wfile.write(b"Not Found")
+            self.wfile.write(b"Endpoint not found")
 
 def run():
     server_address = ('', 8000)
