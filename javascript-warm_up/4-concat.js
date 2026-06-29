@@ -3,4 +3,4 @@
 const argumentUn = process.argv[2];
 const argumentDeux = process.argv[3];
 
-console.log(argumentUn + ' is ' + argumentDeux)
+console.log(argumentUn + ' is ' + argumentDeux);
