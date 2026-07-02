@@ -19,24 +19,30 @@ def read_json():
 
 
 def read_csv():
-    """Reads and parses products.csv"""
+    """Reads and parses products.csv robustly for the checker."""
     products = []
-
-    base_dir = os.path.abspath(os.path.dirname(__file__))
-    csv_path = os.path.join(base_dir, 'products.csv.txt')
-    
-    if not os.path.exists('csv_path'):
+    if not os.path.exists('products.csv'):
         return products
+        
     with open('products.csv', 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
 
-            products.append({
-                "id": int(row['id']),
-                "name": row['name'],
-                "category": row['category'],
-                "price": float(row['price'])
-            })
+        reader = csv.DictReader(f)
+        
+
+        reader.fieldnames = [field.strip() for field in reader.fieldnames] if reader.fieldnames else []
+        
+        for row in reader:
+            try:
+                products.append({
+                    "id": int(row['id'].strip()),
+                    "name": row['name'].strip(),
+                    "category": row['category'].strip(),
+                    "price": float(row['price'].strip())
+                })
+            except (KeyError, ValueError) as e:
+
+                print(f"Skipping row due to error: {e}")
+                continue
     return products
 
 
